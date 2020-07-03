@@ -1,0 +1,3 @@
+[submodule "lib/lzo"]
+	path = lib/lzo
+	url = git@github.com:nemequ/lzo.git

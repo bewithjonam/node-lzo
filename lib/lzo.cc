@@ -1,4 +1,5 @@
-#include "minilzo209/minilzo.h"
+#include "lzo/include/lzo/lzodefs.h"
+#include "lzo/include/lzo/lzo1z.h"
 
 #include <node.h>
 #include <v8.h>
@@ -24,9 +25,9 @@
 using namespace v8;
 
 int compress(const unsigned char *input, unsigned char *output, lzo_uint in_len, lzo_uint& out_len) {
-    char* wrkmem = (char*) malloc(LZO1X_1_MEM_COMPRESS);
+    char* wrkmem = (char*) malloc(LZO1Z_999_MEM_COMPRESS);
 
-    int result = lzo1x_1_compress(input, in_len, output, &out_len, wrkmem);
+    int result = lzo1z_999_compress(input, in_len, output, &out_len, wrkmem);
 
     free(wrkmem);
 
@@ -34,7 +35,7 @@ int compress(const unsigned char *input, unsigned char *output, lzo_uint in_len,
 }
 
 lzo_uint decompress(const unsigned char *input, unsigned char *output, lzo_uint in_len, lzo_uint& out_len) {
-    int r = lzo1x_decompress_safe(input, in_len, output, &out_len, NULL);
+    int r = lzo1z_decompress_safe(input, in_len, output, &out_len, NULL);
 
     if (r == LZO_E_OK)
         return out_len;
