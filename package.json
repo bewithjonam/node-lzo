@@ -17,7 +17,7 @@
     "build": "node-gyp build",
     "clean": "node-gyp clean",
     "rebuild": "node-gyp rebuild",
-    "preinstall": "git submodule update -i -r"
+    "prepare": "git submodule update -i -r"
   },
   "author": "schroffl",
   "license": "MIT",
